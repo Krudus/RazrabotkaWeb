@@ -1,0 +1,32 @@
+﻿nav {
+	top: 0;
+	position: fixed;
+	right: 0;
+	left: 0;
+}
+
+ol, ul	{
+	list-style: none;
+}
+
+ul.navbar {
+	height: 48px;
+	background-color: green;
+}
+ul.navbar li {
+	line-height: 48px;
+	height: 48px;
+	float:left;
+	width:auto;
+}
+ul.navbar li a {
+	display: block;
+	color: yellow;
+	text-decoration:none;
+	padding: 0 15px;
+}
+
+
+ul.navbar li.current a {
+	background-color:red; 
+}
