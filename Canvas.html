@@ -1,0 +1,99 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			var canvas, ctx, w, h, time=1;
+			var obj = {x:250,y:50};
+
+			function init(){
+				canvas=document.getElementById("canvas");
+				w=canvas.width;
+				h=canvas.height;
+				ctx=canvas.getContext("2d");
+				function word(){
+					if(time==1){
+						if(obj.x>0){
+							ctx.fillStyle="blue";
+							ctx.fillRect(0,0,300,300);
+							ctx.beginPath();
+							ctx.fillStyle="gray";
+							ctx.fillRect(100,190,100,100);
+							ctx.closePath();
+
+							ctx.beginPath();
+							ctx.fillStule="brown";
+							ctx.strokeStyle="red";
+							ctx.lineWidth=2;
+							ctx.moveTo(150,90);
+							ctx.lineTo(75,190);
+							ctx.lineTo(225, 190);
+							ctx.lineTo(150, 90);
+							ctx.fill();
+							ctx.stroke();
+							ctx.closePath();
+
+							ctx.beginPath();
+							ctx.fillStyle = "yellow";
+							ctx.arc(obj.x,obj.y,20,0,2*Math.PI, true);
+							ctx.closePath();
+							ctx.fill();
+							obj.x-=1;
+
+							}
+							
+							else{
+								time=0;
+								obj.x=250;
+								obj.y=50;
+							}
+					}
+
+
+
+					else if(time == 0){
+						if(obj.x>0){
+							ctx.fillStyle="black";
+							ctx.fillRect(0,0,300,300);
+							ctx.fillRect(100,200,50,50);
+
+							ctx.fillStyle="gray";
+							ctx.fillRect(100,190,100,100);
+							ctx.closePath();
+
+							ctx.beginPath();
+							ctx.fillStule="green";
+							ctx.strokeStyle="red";
+							ctx.lineWidth=2;
+							ctx.moveTo(150,90);
+							ctx.lineTo(75,190);
+							ctx.lineTo(225, 190);
+							ctx.lineTo(150, 90);
+							ctx.fill();
+							ctx.stroke();
+							ctx.closePath();
+
+							ctx.beginPath();
+							ctx.fillStyle = "white";
+							ctx.arc(obj.x,obj.y,20,0,2*Math.PI, true);
+							ctx.closePath();
+							ctx.fill();
+							obj.x-=1;
+							}
+							else{
+								time=1;
+								obj.x=250;
+								obj.y=50;
+							}
+					}
+
+				}
+				setInterval(word,10);
+				
+			}
+
+
+		</script>
+	</head>
+	<body onload="init()">
+		<canvas id="canvas" width="400" height="300"> not support canvas</canvas>
+	</body>
+</html>
