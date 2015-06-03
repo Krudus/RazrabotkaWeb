@@ -1,0 +1,292 @@
+<html>
+	<head>
+		<title>Тараканьи бега</title>
+		
+	</head>
+
+	<body>
+		<canvas id="page" width="600" height="305">Not page</canvas>
+
+		<script type="text/javascript">
+
+			var page, w;
+			var image1, image2, image3;
+			var rand1, rand2, rand3;
+			var countViner1=0, countViner2=0, countViner3=0;
+
+			var gamer1=1;
+			var tarakan1;
+			var stavka1;
+
+			var gamer2=2;
+			var tarakan2;
+			var stavka2;
+
+			var gamer3=3;
+			var tarakan3;
+			var stavka3;
+
+			var vinsum=0;
+
+			function stavki()
+			{
+				tarakan1 = parseInt(document.getElementById("gamer1tarakan").value);
+				stavka1 = parseInt(document.getElementById("gamer1stavka").value);
+
+				tarakan2 = parseInt(document.getElementById("gamer2tarakan").value);
+				stavka2 = parseInt(document.getElementById("gamer2stavka").value);
+
+				tarakan3 = parseInt(document.getElementById("gamer3tarakan").value);
+				stavka3 = parseInt(document.getElementById("gamer3stavka").value);
+			}
+
+			function draw()
+			{
+				page=document.getElementById("page");
+				w=page.getContext("2d");
+
+				var image1 = {x:0, y:5};
+				image1 = new Image();
+				image1.src = 'http://activerain.trulia.com/image_store/uploads/8/9/9/6/7/ar135344667976998.jpg';
+				image2 = new Image();
+				image2.src ='http://activerain.trulia.com/image_store/uploads/8/9/9/6/7/ar135344667976998.jpg';
+				image3 = new Image();
+				image3.src ='http://activerain.trulia.com/image_store/uploads/8/9/9/6/7/ar135344667976998.jpg';
+
+				var x1 = 0;
+				var x2 = 0;
+				var x3 = 0;
+
+				function myWorld()
+				{	page.height = 305;
+					page.width = 600;
+
+					w.beginPath()
+					w.fillStyle="green";
+ 					w.lineTo(0, 1);
+            		w.lineTo(600, 1);
+					w.closePath()
+					w.stroke()
+					w.fill()
+
+					w.beginPath()
+					w.fillStyle="green";
+ 					w.lineTo(0, 101);
+            		w.lineTo(600, 101);
+					w.closePath()
+					w.stroke()
+					w.fill()
+
+					w.beginPath()
+					w.fillStyle="green";
+ 					w.lineTo(0, 201);
+					w.lineTo(600, 201);
+					w.closePath()
+					w.stroke()
+					w.fill()
+
+					w.beginPath()
+					w.fillStyle="green";
+ 					w.lineTo(0, 301);
+            		w.lineTo(600, 301);
+					w.closePath()
+					w.stroke()
+					w.fill()
+
+ 					w.drawImage(image1, x1, 5, 90, 90);
+					w.drawImage(image1, x2, 105, 90, 90);
+					w.drawImage(image1, x3, 205, 90, 90);
+
+					rand1 = Math.random();
+					rand2 = Math.random();
+					rand3 = Math.random();
+
+					if(x1 < 511)
+					{
+						if(rand1<1)
+						{
+							x1+=Math.random()*3;
+						}
+						if(rand1>0)
+						{
+							x1-=Math.random()*2;
+						}
+					}
+
+					if(x2 < 511)
+					{
+						if(rand2<1)
+						{
+							x2+=Math.random()*3;
+						}
+						if(rand2>0)
+						{
+							x2-=Math.random()*2;
+						}
+					}
+
+					if(x3 < 511)
+					{
+						if(rand3<1)
+						{
+							x3+=Math.random()*3;
+						}
+						if(rand3>0)
+						{
+							x3-=Math.random()*2;
+						}
+					}
+
+					if(x1>=511)
+					{
+						if(countViner2==2 || countViner3==2)
+						{
+							if(countViner1!=1 && countViner1!=2)
+								{
+									countViner1=3;
+								}
+						}
+						else if(countViner2==1 || countViner3==1)
+						{
+								countViner1=2;
+						}
+						else if(countViner2==0 && countViner3==0)
+						{
+							countViner1=1;
+						}
+					}
+					if(countViner1==1)
+					{
+						vinsum = stavka1 + stavka2 + stavka3;
+						w.fillStyle = "black";
+						w.strokeStyle = "#F00";
+						w.font = "italic 12pt Arial";
+						w.fillText("Первое место", 50, 50);
+						w.fillText("Выйгрыш " + vinsum, 250, 66);
+					}
+					if(countViner1==2)
+					{
+						w.fillStyle = "black";
+						w.strokeStyle = "#F00";
+						w.font = "italic 12pt Arial";
+						w.fillText("Второе место", 50, 50);
+						w.fillText("Выйгрыш: 0", 250, 50);
+					}
+					if(countViner1==3)
+					{
+						w.fillStyle = "black";
+						w.strokeStyle = "#F00";
+						w.font = "italic 12pt Arial";
+						w.fillText("Третье место", 50, 50);
+						w.fillText("Выйгрыш: 0", 250, 50);
+					}
+
+					if(x2>=511)
+					{
+						if(countViner1==2 || countViner3==2)
+						{
+							if(countViner2!=1 && countViner2!=2)
+								{
+									countViner2=3;
+								}
+						}
+						else if(countViner1==1 || countViner3==1)
+						{
+							countViner2=2;
+						}
+						else if(countViner1==0 && countViner3==0)
+						{
+							countViner2=1;
+						}
+					}
+					if(countViner2==1)
+					{
+						vinsum = stavka1 + stavka2 + stavka3;
+						w.fillStyle = "black";
+						w.strokeStyle = "#F00";
+						w.font = "italic 12pt Arial";
+						w.fillText("Первое место", 50, 150);
+						w.fillText("Выйгрыш " + vinsum, 250, 166);
+					}
+					if(countViner2==2)
+					{
+						w.fillStyle = "black";
+						w.strokeStyle = "#F00";
+						w.font = "italic 12pt Arial";
+						w.fillText("Второе место", 50, 150);
+						w.fillText("Выйгрыш 0", 250, 150);
+					}
+					if(countViner2==3)
+					{
+						w.fillStyle = "black";
+						w.strokeStyle = "#F00";
+						w.font = "italic 12pt Arial";
+						w.fillText("Третье место", 50, 150);
+						w.fillText("Выйгрыш 0", 250, 150);
+					}
+
+					if(x3>=511)
+					{
+						if(countViner1==2 || countViner2==2)
+						{
+							if(countViner3!=1 && countViner3!=2)
+								{
+									countViner3=3;
+								}
+						}
+						else if(countViner1==1 || countViner2==1)
+						{
+							countViner3=2;
+						}
+						else if(countViner1==0 && countViner2==0)
+						{
+							countViner3=1;
+						}
+					}
+					if(countViner3==1)
+					{
+						vinsum = stavka1 + stavka2 + stavka3;
+						w.fillStyle = "black";
+						w.strokeStyle = "#F00";
+						w.font = "italic 12pt Arial";
+						w.fillText("Первое место", 50, 250);
+						w.fillText("Выйгрыш " + vinsum, 250, 266);
+					}
+					if(countViner3==2)
+					{
+						w.fillStyle = "black";
+						w.strokeStyle = "#F00";
+						w.font = "italic 12pt Arial";
+						w.fillText("Второе место", 50, 250);
+						w.fillText("Выйгрыш 0", 250, 250);
+					}
+					if(countViner3==3)
+					{
+						w.fillStyle = "black";
+						w.strokeStyle = "#F00";
+						w.font = "italic 12pt Arial";
+						w.fillText("Третье место", 50, 250);
+						w.fillText("Выйгрыш 0", 250, 250);
+					}
+				}
+
+				setInterval(myWorld, 5);
+			}
+		</script>
+		<button onclick="stavki()">Сделать ставки</button>
+		<button onclick="draw()">Старт</button>
+
+		<p><b>Игрок 1:</b></p>
+		<p>Номер таракана:</p> <input maxlength="25" size="20" type="text" name="gamer1tarakan" id="gamer1tarakan">
+		<p>Сумма ставки:</p> <input maxlength="25" size="20" type="text" name="gamer1stavka" id="gamer1stavka">
+
+		<p><b>Игрок 2:</b></p>
+		<p>Номер таракана:</p> <input maxlength="25" size="20" type="text" name="gamer2tarakan" id="gamer2tarakan">
+		<p>Сумма ставки:</p> <input maxlength="25" size="20" type="text" name="gamer2stavka" id="gamer2stavka">
+
+		<p><b>Игрок 3:</b></p>
+		<p>Номер таракана:</p> <input maxlength="25" size="20" type="text" name="gamer3tarakan" id="gamer3tarakan">
+		<p>Сумма ставки:</p>  <input maxlength="25" size="20" type="text" name="gamer3stavka" id="gamer3stavka">
+
+	</body>
+</html>
